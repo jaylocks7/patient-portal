@@ -22,7 +22,10 @@ export function PatientDetailModal({ patient, onClose }: Props) {
     .filter(Boolean)
     .join(" ");
 
-  const formattedAddress = `${patient.address.street}, ${patient.address.city}, ${patient.address.state} ${patient.address.zipCode}`;
+  const streetLine = patient.address.unit
+    ? `${patient.address.street}, ${patient.address.unit}`
+    : patient.address.street;
+  const formattedAddress = `${streetLine}, ${patient.address.city}, ${patient.address.state} ${patient.address.zipCode}`;
 
   const deletePatient = useDeletePatient();
 

@@ -44,6 +44,7 @@ export function AddPatientModal({ open, onClose }: Props) {
       status: values.status as CreatePatientBody["status"],
       address: {
         street: values.street as string,
+        unit: (values.unit as string | undefined) || undefined,
         city: values.city as string,
         state: values.state as string,
         zipCode: values.zipCode as string,
@@ -154,13 +155,22 @@ export function AddPatientModal({ open, onClose }: Props) {
           </Col>
         </Row>
 
-        <Form.Item
-          label="Street"
-          name="street"
-          rules={[{ required: true, message: "Required" }]}
-        >
-          <Input placeholder="123 Main St, Apt 4B" />
-        </Form.Item>
+        <Row gutter={12}>
+          <Col span={16}>
+            <Form.Item
+              label="Street"
+              name="street"
+              rules={[{ required: true, message: "Required" }]}
+            >
+              <Input placeholder="123 Main St" />
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item label="Apartment/Unit" name="unit">
+              <Input placeholder="Apt 4B" />
+            </Form.Item>
+          </Col>
+        </Row>
 
         <Row gutter={12}>
           <Col span={10}>

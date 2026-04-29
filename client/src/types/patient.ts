@@ -9,6 +9,7 @@ export const PATIENT_STATUSES: PatientStatus[] = [
 
 export interface Address {
   street: string;
+  unit?: string;
   city: string;
   state: string;
   zipCode: string;
